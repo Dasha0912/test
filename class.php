@@ -51,7 +51,14 @@ final class Item
             return $this->$property;
         }
     }
-
+    
+    /**
+     * __set
+     *
+     * @param $property
+     * @param $value
+     * @return void
+     */
     public function __set($property, $value)
     {
         if(property_exists($this, $property) && !empty($value) && mb_strtolower($property) == 'name')
@@ -68,13 +75,27 @@ final class Item
             }
         }
     }
-
+    
+    /**
+     * init
+     *
+     * @param string $name_db
+     * @param int $status_db
+     * @return void
+     */
     private function init($name_db, $status_db) 
     {
         $this->name = $name_db;
         $this->status = $status_db;
     }
-  
+      
+    /**
+     * save
+     *
+     * @param  string $name_val
+     * @param  int $status_val
+     * @return void
+     */
     public function save($name_val, $status_val) {
         if ($this->changed == false)
         {
